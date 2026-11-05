@@ -125,8 +125,8 @@ export default function Chatbot() {
                 <div
                   className={`px-4 py-3 rounded-2xl text-xs sm:text-sm leading-relaxed whitespace-pre-wrap ${
                     msg.role === "user"
-                      ? "bg-[#C62828] text-white rounded-tr-none shadow-sm"
-                      : "bg-white/80 border border-gray-100/90 text-gray-800 rounded-tl-none shadow-sm"
+                      ? "bg-[#C62828] text-white rounded-tr-none shadow-[0_4px_16px_rgba(198,40,40,0.3)]"
+                      : "glass-sm text-gray-800 rounded-tl-none border-white/90 shadow-sm"
                   }`}
                 >
                   {msg.text}
@@ -160,7 +160,7 @@ export default function Chatbot() {
                 <button
                   key={q}
                   onClick={() => sendMessage(q)}
-                  className="text-xs bg-white/70 border border-gray-200/80 text-gray-600 px-3 py-1.5 rounded-xl hover:bg-[#FDECEC] hover:text-[#C62828] transition-all"
+                  className="text-xs glass-sm text-gray-700 px-3 py-1.5 rounded-xl hover:bg-white/90 hover:text-[#C62828] transition-all font-medium border-white/80"
                 >
                   {q}
                 </button>

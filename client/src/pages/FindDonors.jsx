@@ -166,10 +166,10 @@ export default function FindDonors() {
         <div className="flex flex-wrap items-center gap-1.5 pt-1">
           <button
             onClick={() => setSelectedBG("")}
-            className={`px-3 py-1 rounded-xl text-xs font-bold transition-all border ${
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border ${
               !selectedBG
-                ? "bg-[#C62828] text-white border-[#C62828] shadow-sm"
-                : "bg-white/60 border-gray-200/80 text-gray-600 hover:bg-white"
+                ? "bg-[#C62828] text-white border-[#C62828] shadow-[0_2px_10px_rgba(198,40,40,0.35)]"
+                : "glass-sm border-white/80 text-gray-600 hover:bg-white/90"
             }`}
           >
             All
@@ -178,10 +178,10 @@ export default function FindDonors() {
             <button
               key={bg}
               onClick={() => setSelectedBG(bg === selectedBG ? "" : bg)}
-              className={`px-3 py-1 rounded-xl text-xs font-bold transition-all border ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border ${
                 selectedBG === bg
-                  ? "bg-[#C62828] text-white border-[#C62828] shadow-sm"
-                  : "bg-white/60 border-gray-200/80 text-gray-600 hover:bg-white"
+                  ? "bg-[#C62828] text-white border-[#C62828] shadow-[0_2px_10px_rgba(198,40,40,0.35)]"
+                  : "glass-sm border-white/80 text-gray-600 hover:bg-white/90"
               }`}
             >
               {bg}

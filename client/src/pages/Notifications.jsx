@@ -34,7 +34,7 @@ export default function Notifications() {
         {unreadCount > 0 && (
           <button
             onClick={markAllRead}
-            className="flex items-center gap-1.5 text-xs font-bold text-[#C62828] bg-white/60 border border-[#C62828]/30 px-3.5 py-2 rounded-xl hover:bg-[#FDECEC] transition-all"
+            className="btn-secondary flex items-center gap-1.5 text-xs py-2 px-3.5"
           >
             <CheckCheck className="w-4 h-4" /> Mark all read
           </button>

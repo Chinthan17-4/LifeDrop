@@ -71,10 +71,10 @@ export default function Register() {
                 <div className="grid grid-cols-2 gap-2">
                   {["donor", "recipient"].map(r => (
                     <button key={r} type="button" onClick={() => setRole(r)}
-                      className={`py-3 rounded-xl border-2 font-semibold text-sm transition-all ${
+                      className={`py-3 rounded-xl border font-semibold text-sm transition-all ${
                         role === r
-                          ? "border-[#C62828] bg-[#C62828]/5 text-[#C62828] shadow-sm"
-                          : "border-gray-200/60 text-gray-500 bg-white/40 hover:border-gray-300"
+                          ? "border-[#C62828] bg-red-50/70 text-[#C62828] shadow-sm backdrop-blur-sm"
+                          : "border-white/80 text-gray-600 bg-white/50 backdrop-blur-sm hover:bg-white/80"
                       }`}>
                       {r === "donor" ? "🩸 Donor" : "🏥 Recipient"}
                     </button>

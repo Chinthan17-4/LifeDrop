@@ -125,22 +125,22 @@ export default function DonorDetails() {
         </div>
 
         {donor.bio && (
-          <p className="text-xs sm:text-sm text-gray-500 bg-white/60 border border-gray-100/80 rounded-2xl p-4 leading-relaxed">
+          <p className="text-xs sm:text-sm text-gray-600 glass-sm rounded-2xl p-4 leading-relaxed italic border-white/80">
             "{donor.bio}"
           </p>
         )}
 
         {/* Quick Stats Grid */}
         <div className="grid grid-cols-3 gap-3">
-          <div className="bg-white/60 border border-white/80 rounded-2xl p-4 text-center">
+          <div className="glass-sm border-white/90 p-4 text-center">
             <p className="text-xl sm:text-2xl font-extrabold text-[#C62828]">{donor.donationCount}</p>
             <p className="text-[11px] text-gray-400 font-semibold uppercase mt-0.5">Donations</p>
           </div>
-          <div className="bg-white/60 border border-white/80 rounded-2xl p-4 text-center">
+          <div className="glass-sm border-white/90 p-4 text-center">
             <p className="text-xs sm:text-sm font-bold text-gray-900 mt-1">{formatDate(donor.lastDonation)}</p>
             <p className="text-[11px] text-gray-400 font-semibold uppercase mt-1">Last Date</p>
           </div>
-          <div className="bg-white/60 border border-white/80 rounded-2xl p-4 text-center">
+          <div className="glass-sm border-white/90 p-4 text-center">
             <p className="text-xs sm:text-sm font-bold text-gray-900 mt-1">{timeAgo(donor.lastDonation)}</p>
             <p className="text-[11px] text-gray-400 font-semibold uppercase mt-1">Gap</p>
           </div>
@@ -150,7 +150,7 @@ export default function DonorDetails() {
         <div className="space-y-3 pt-2">
           <h2 className="text-xs font-bold text-gray-400 uppercase tracking-wide">Direct Verification Contacts</h2>
 
-          <div className="flex items-center justify-between p-3.5 rounded-2xl bg-white/60 border border-gray-100/80">
+          <div className="flex items-center justify-between p-3.5 rounded-2xl glass-sm border-white/85">
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
                 <Phone className="w-4 h-4" />
@@ -162,7 +162,7 @@ export default function DonorDetails() {
             </div>
             <a
               href={`tel:${donor.phone}`}
-              className="text-xs font-bold border border-[#C62828]/40 text-[#C62828] px-3.5 py-1.5 rounded-xl hover:bg-[#FDECEC] transition-colors"
+              className="text-xs font-bold btn-secondary px-3.5 py-1.5"
             >
               Call
             </a>

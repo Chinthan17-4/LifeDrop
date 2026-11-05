@@ -44,15 +44,23 @@ export default function Login() {
 
         <div className="glass-dark p-8">
           {/* Demo credentials */}
-          <div className="bg-blue-50/80 border border-blue-200/60 rounded-xl p-3.5 mb-6">
-            <p className="text-xs font-semibold text-blue-600 mb-2">🎯 Demo Accounts</p>
+          <div className="glass-sm p-4 mb-6 bg-blue-50/50 border border-blue-200/60">
+            <p className="text-xs font-bold text-blue-700 mb-2 flex items-center gap-1.5">
+              <span>🎯</span> Demo Quick Access
+            </p>
             <div className="flex gap-2">
-              <button onClick={() => fillDemo("donor")}
-                className="flex-1 text-xs bg-white/60 border border-blue-200/60 text-blue-600 px-3 py-1.5 rounded-lg hover:bg-blue-100/60 transition-colors font-medium">
+              <button
+                type="button"
+                onClick={() => fillDemo("donor")}
+                className="flex-1 text-xs bg-white/70 backdrop-blur-sm border border-blue-200/80 text-blue-700 px-3 py-2 rounded-xl hover:bg-white hover:shadow-sm transition-all font-semibold"
+              >
                 Donor Demo
               </button>
-              <button onClick={() => fillDemo("recipient")}
-                className="flex-1 text-xs bg-white/60 border border-blue-200/60 text-blue-600 px-3 py-1.5 rounded-lg hover:bg-blue-100/60 transition-colors font-medium">
+              <button
+                type="button"
+                onClick={() => fillDemo("recipient")}
+                className="flex-1 text-xs bg-white/70 backdrop-blur-sm border border-blue-200/80 text-blue-700 px-3 py-2 rounded-xl hover:bg-white hover:shadow-sm transition-all font-semibold"
+              >
                 Recipient Demo
               </button>
             </div>

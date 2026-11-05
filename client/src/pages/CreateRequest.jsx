@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { AlertCircle, CheckCircle, Heart, ArrowLeft, Send } from "lucide-react";
 import { BLOOD_GROUPS, CITIES, DEMO_DONORS } from "../data/donors";
+import { HOSPITALS } from "../data/hospitals";
 import { useAuth } from "../context/AuthContext";
 import { useNotifications } from "../context/NotificationContext";
 import { generateId } from "../utils/helpers";
+import { useGoogleMaps } from "../hooks/useGoogleMaps";
 import DonorCard from "../components/DonorCard";
+
+const MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || "";
 
 export default function CreateRequest() {
   const { user } = useAuth();
   const { addNotification } = useNotifications();
   const [params] = useSearchParams();
   const isEmergencyParam = params.get("emergency") === "true";
+  const { status: mapsStatus } = useGoogleMaps(MAPS_API_KEY);
+  const hospitalRef = useRef(null);
+  const autocompleteRef = useRef(null);
 
   const [submitted, setSubmitted] = useState(false);
   const [matchedDonors, setMatchedDonors] = useState([]);
@@ -32,6 +39,42 @@ export default function CreateRequest() {
     setForm((p) => ({ ...p, [k]: v }));
     setErrors((p) => ({ ...p, [k]: "" }));
   };
+
+  // Attach Places Autocomplete to hospital input when Google Maps is ready
+  useEffect(() => {
+    if (mapsStatus !== "ready" || !hospitalRef.current || autocompleteRef.current) return;
+    if (!window.google?.maps?.places) return;
+
+    const ac = new window.google.maps.places.Autocomplete(hospitalRef.current, {
+      componentRestrictions: { country: "IN" },
+      types: ["hospital", "health"],
+      fields: ["name", "formatted_address", "address_components"],
+    });
+
+    ac.addListener("place_changed", () => {
+      const place = ac.getPlace();
+      if (place.name) {
+        setForm((p) => ({ ...p, hospital: place.name }));
+        setErrors((p) => ({ ...p, hospital: "" }));
+        // Try to auto-fill city from address components
+        const cityComp = place.address_components?.find(
+          (c) => c.types.includes("locality") || c.types.includes("administrative_area_level_2")
+        );
+        if (cityComp) {
+          const matchedCity = CITIES.find((c) =>
+            cityComp.long_name.toLowerCase().includes(c.toLowerCase()) ||
+            c.toLowerCase().includes(cityComp.long_name.toLowerCase())
+          );
+          if (matchedCity) {
+            setForm((p) => ({ ...p, city: matchedCity }));
+            setErrors((p) => ({ ...p, city: "" }));
+          }
+        }
+      }
+    });
+
+    autocompleteRef.current = ac;
+  }, [mapsStatus]);
 
   const validate = () => {
     const e = {};
@@ -225,12 +268,28 @@ export default function CreateRequest() {
               Hospital Center *
             </label>
             <input
+              ref={hospitalRef}
               type="text"
+              list="hospital-suggestions"
               value={form.hospital}
-              onChange={(e) => set("hospital", e.target.value)}
+              onChange={(e) => {
+                const val = e.target.value;
+                set("hospital", val);
+                const matched = HOSPITALS.find((h) => h.name.toLowerCase() === val.toLowerCase());
+                if (matched && matched.city && !form.city) {
+                  set("city", matched.city);
+                }
+              }}
               className="input-field"
-              placeholder="e.g. City General Hospital"
+              placeholder="e.g. Kasturba Medical College & Hospital"
             />
+            <datalist id="hospital-suggestions">
+              {HOSPITALS.map((h) => (
+                <option key={h.id} value={h.name}>
+                  {h.city} — {h.address}
+                </option>
+              ))}
+            </datalist>
             {errors.hospital && <p className="text-[11px] text-red-500 mt-1 font-semibold">{errors.hospital}</p>}
           </div>
 

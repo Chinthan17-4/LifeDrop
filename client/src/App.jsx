@@ -18,6 +18,7 @@ import MyRequests from "./pages/MyRequests";
 import Notifications from "./pages/Notifications";
 import DonorMap from "./pages/DonorMap";
 import Chatbot from "./pages/Chatbot";
+import AmbientBackground from "./components/AmbientBackground";
 
 function RoleRedirect() {
   const { user } = useAuth();
@@ -28,6 +29,7 @@ function RoleRedirect() {
 export default function App() {
   return (
     <BrowserRouter>
+      <AmbientBackground />
       <AuthProvider>
         <NotificationProvider>
           <Routes>

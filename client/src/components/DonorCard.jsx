@@ -64,16 +64,16 @@ export default function DonorCard({ donor, distance }) {
       <div className="mt-4 flex gap-2">
         <Link
           to={`/donor/${donor.id}`}
-          className="flex-1 text-center text-sm font-semibold border border-[#C62828]/30 text-[#C62828] px-3 py-2 rounded-xl hover:bg-[#C62828]/5 hover:border-[#C62828]/50 transition-all bg-white/40"
+          className="btn-secondary flex-1 text-center text-xs py-2 flex items-center justify-center"
         >
           View Profile
         </Link>
         {donor.available && (
           <a
             href={`tel:${donor.phone}`}
-            className="flex items-center gap-1.5 text-sm font-semibold bg-[#C62828] text-white px-3 py-2 rounded-xl shadow-[0_2px_10px_rgba(198,40,40,0.3)] hover:bg-[#8E0000] hover:shadow-[0_4px_16px_rgba(198,40,40,0.4)] transition-all"
+            className="btn-primary flex items-center justify-center gap-1.5 text-xs py-2 flex-1"
           >
-            <Phone className="w-3.5 h-3.5" /> Contact
+            <Phone className="w-3.5 h-3.5" /> Direct Contact
           </a>
         )}
       </div>

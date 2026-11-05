@@ -4,7 +4,7 @@ export default function StatCard({ icon: Icon, label, value, color = "#C62828", 
   return (
     <div className="glass card-hover p-5 flex items-center gap-4">
       <div
-        className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm"
+        className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm border border-white/70 backdrop-blur-sm"
         style={{ backgroundColor: bg }}
       >
         <Icon className="w-5 h-5" style={{ color }} />

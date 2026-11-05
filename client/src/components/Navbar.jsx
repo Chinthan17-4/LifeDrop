@@ -36,7 +36,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-white/60 shadow-[0_1px_12px_rgba(0,0,0,0.06)]">
+    <nav className="sticky top-0 z-50 bg-white/65 backdrop-blur-xl border-b border-white/70 shadow-[0_4px_24px_rgba(0,0,0,0.03)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -97,7 +97,7 @@ export default function Navbar() {
                     <ChevronDown className="w-3.5 h-3.5 text-gray-400" />
                   </button>
                   {dropdownOpen && (
-                    <div className="absolute right-0 mt-2 w-52 bg-white/90 backdrop-blur-md rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.12)] border border-white/60 py-1.5 z-50">
+                    <div className="absolute right-0 mt-2 w-52 glass-dark py-1.5 z-50">
                       <div className="px-4 py-2.5 border-b border-gray-100/80">
                         <p className="text-sm font-semibold text-gray-800 truncate">{user.name}</p>
                         <p className="text-xs text-gray-400 capitalize mt-0.5">{user.role}</p>

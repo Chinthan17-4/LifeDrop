@@ -39,8 +39,8 @@ export default function MyRequests() {
             onClick={() => setFilter(s)}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold capitalize transition-all ${
               filter === s
-                ? "bg-[#C62828] text-white shadow-sm"
-                : "text-gray-500 hover:text-gray-900 hover:bg-white/60"
+                ? "bg-[#C62828] text-white shadow-[0_2px_8px_rgba(198,40,40,0.35)]"
+                : "text-gray-500 hover:text-gray-900 hover:bg-white/80"
             }`}
           >
             {s}{" "}

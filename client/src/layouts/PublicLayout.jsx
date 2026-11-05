@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 
 export default function PublicLayout() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-transparent relative">
       <Navbar />
       <Outlet />
     </div>
